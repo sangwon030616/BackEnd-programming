@@ -40,4 +40,5 @@ public class BlogApiController {
         blogService.deleteById(id);
         return ResponseEntity.ok().build();
     }
+
 }
