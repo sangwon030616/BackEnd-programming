@@ -20,4 +20,17 @@ public class BlogService {
     public List<Article> findAll() {
         return blogRepository.findAll();
     }
+
+    public Article getById(Long id) {
+        return blogRepository.findById(id)
+                .orElseThrow(() ->
+                        new IllegalArgumentException("게시글이 없습니다."));
+    }
+
+    public void deleteById(Long id) {
+        blogRepository.deleteById(id);
+    }
+
+
 }
+
