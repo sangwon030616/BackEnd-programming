@@ -34,15 +34,21 @@ public class BlogService {
         blogRepository.deleteById(id);
     }
 
-    @Transactional
-    public Article updateById(long id, ArticleUpdateRequest request) {
-
-        Article article = blogRepository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("게시글이 존재하지 않습니다."));
-
-        article.update(request.getTitle(), request.getContent());
-
-        return article;
-    }
+//
+//    public Article updateById(long id, ArticleUpdateRequest request) {
+//
+//        Article article = blogRepository.findById(id)
+//                .orElseThrow(() -> new IllegalArgumentException("게시글이 존재하지 않습니다."));
+//
+//        article.update(request.getTitle(), request.getContent());
+//
+//        return article;
+//    }
+@Transactional
+public Article updateArticle(long id, ArticleUpdateRequest req) {
+    Article article = blogRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Article not found"));
+    article.update(req.getTitle(), req.getContent());
+    return article;
+}
 }
 
